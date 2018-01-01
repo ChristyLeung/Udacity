@@ -4,4 +4,6 @@ Python Foundation
 1. Investigate texts and calls
 2. Best movie
 
+
 Machine Learning Foundation
+1. Examination of psychological phenomena
