@@ -25,7 +25,6 @@ September 2016.".
 """
 d={}
 
-
 for call in calls:
     if call[0] in d:
         d[call[0]]+=int(call[3])
