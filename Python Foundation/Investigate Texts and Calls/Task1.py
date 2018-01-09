@@ -20,24 +20,18 @@ There are <count> different telephone numbers in the records."""
 
 d={}
 
-for text in texts:
-    if text[0] in d:
+for text,call in texts,calls:
+    if text[0], call[0] in d:
         d[text[0]]+=1
-    else:
-        d[text[0]]=1
-    if text[1] in d:
-        d[text[1]]+=1
-    else:
-        d[text[1]]=1
-
-for call in calls:
-    if call[0] in d:
         d[call[0]]+=1
     else:
+        d[text[0]]=1
         d[call[0]]=1
-    if call[1] in d:
+    if text[1], call[1] in d:
+        d[text[1]]+=1
         d[call[1]]+=1
     else:
+        d[text[1]]=1
         d[call[1]]=1
 
 print("There are " + str(len(d)) + " different telephone numbers in the records.")

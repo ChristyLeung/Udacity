@@ -3,7 +3,6 @@
 你将在以后的课程中了解更多有关读取文件的知识。
 """
 import csv
-import operator
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -36,6 +35,13 @@ for call in calls:
     else:
         d[call[1]]=int(call[3])
 
-sorted_call = sorted(d.call(), key=operator.itemgetter(1))
+    if call[3] == max(call[3]):
+        Number.append(call[0])
+        CallTime.append(call[3])
+Number = set(Number)
+CallTime = set(CallTime)
 
-print(str(sorted_call[-1][0]) + " spent the longest time, " + (str(sorted_call[-1][1])) + " seconds, on the phone during September 2016.")
+sorted_call = sorted(dict.call(), reverse=True)
+
+print(str(Number) + " spent the longest time, " + (str(CallTime)) +
+" seconds, on the phone during September 2016.")

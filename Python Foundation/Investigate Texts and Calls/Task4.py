@@ -37,9 +37,14 @@ for text in texts:
     textsOutAndIn.append(text[0])
     textsOutAndIn.append(text[1])
 
-
 callOut = set(callOut)
 callIn = set(callIn)
 textsOutAndIn = set(textsOutAndIn)
-MarketerNumber = callOut - callIn - textsOutAndIn
-print("These numbers could be telemarketers: " + '\n' + str(MarketerNumber) + '\n')
+SuspectNumber = callOut - callIn - textsOutAndIn
+
+MarketerNumber = []
+for call in SuspectNumber:
+    if call[0].startswith("140"):
+        MarketerNumber.append(call[0])
+MarketerNumber = set(MarketerNumber)
+print("These numbers could be telemarketers: " + "\n" + str("\n".join(MarketerNumber)))

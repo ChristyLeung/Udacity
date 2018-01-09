@@ -44,18 +44,21 @@ Bangalore = []
 
 for call in calls:
     if call[0].startswith("(080)"):
-        if call[1].startswith("(")
+        if call[1].startswith("("):
             rightItem = call[1].index(")")
             Bangalore.append(call[1][1:rightItem])
         if " " in call[1]:
             Bangalore.append(call[1][0:4])
-print("The numbers called by people in Bangalore have codes:" + Bangalore)
+Bangalore = set(Bangalore)
+sorted(Bangalore)
+print("The numbers called by people in Bangalore have codes:" + "\n" + str("\n".join(Bangalore)))
 
 BangaloreToBangalore = []
 
 for call in calls:
     if call[0].startswith("(080)"):
-        if call[1].startswith("080")
+        if call[1].startswith("080"):
             Bangalore.append(call[1])
 
-print('%.2f%%' % (len(BangaloreToBangalore)/len(Bangalore) * 100) + " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+print('%.2f' % (len(str(BangaloreToBangalore))/len(str(Bangalore)) * 100) +
+" percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
