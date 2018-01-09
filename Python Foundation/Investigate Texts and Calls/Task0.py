@@ -20,8 +20,8 @@ with open('calls.csv', 'r') as f:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 a = [str(texts[0][0]), str(texts[0][1]), str(texts[0][2]), str(calls[-1][0]), str(calls[-1][1]), str(calls[-1][2]), str(calls[-1][3])]
-First record = "First record of texts, {} texts {} at time {}".format(a[0], a[1], a[2])
-Last record = "Last record of calls, {} calls {} at time {}, lasting {} seconds".format(a[3], a[4], a[5], a[6])
+First_record = "First record of texts, {} texts {} at time {}".format(a[0], a[1], a[2])
+Last_record = "Last record of calls, {} calls {} at time {}, lasting {} seconds".format(a[3], a[4], a[5], a[6])
 
-print(First record)
-print(Last record)
+print(First_record)
+print(Last_record)

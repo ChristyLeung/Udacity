@@ -40,11 +40,6 @@ for text in texts:
 callOut = set(callOut)
 callIn = set(callIn)
 textsOutAndIn = set(textsOutAndIn)
-SuspectNumber = callOut - callIn - textsOutAndIn
-
-MarketerNumber = []
-for call in SuspectNumber:
-    if call[0].startswith("140"):
-        MarketerNumber.append(call[0])
+MarketerNumber = callOut - callIn - textsOutAndIn
 MarketerNumber = set(MarketerNumber)
 print("These numbers could be telemarketers: " + "\n" + str("\n".join(MarketerNumber)))

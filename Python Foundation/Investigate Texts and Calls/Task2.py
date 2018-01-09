@@ -25,6 +25,7 @@ September 2016.".
 """
 d={}
 
+
 for call in calls:
     if call[0] in d:
         d[call[0]]+=int(call[3])
@@ -35,13 +36,10 @@ for call in calls:
     else:
         d[call[1]]=int(call[3])
 
-    if call[3] == max(call[3]):
-        Number.append(call[0])
-        CallTime.append(call[3])
-Number = set(Number)
-CallTime = set(CallTime)
+Number = []
+CallTime = []
 
-sorted_call = sorted(dict.call(), reverse=True)
+Number, CallTime = max(d.items(), key=lambda x:x[1])
 
 print(str(Number) + " spent the longest time, " + (str(CallTime)) +
 " seconds, on the phone during September 2016.")
