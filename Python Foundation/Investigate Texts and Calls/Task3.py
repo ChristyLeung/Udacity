@@ -41,18 +41,20 @@ to other fixed lines in Bangalore."
 """
 
 Bangalore = []
+BangaloreBeforeSet = []
+
 
 for call in calls:
     if call[0].startswith("(080)"):
         if call[1].startswith("("):
             rightItem = call[1].index(")")
-            Bangalore.append(call[1][1:rightItem])
+            BangaloreBeforeSet.append(call[1][1:rightItem])
         if " " in call[1]:
-            Bangalore.append(call[1][0:4])
+            BangaloreBeforeSet.append(call[1][0:4])
 
-Bangalore = set(Bangalore)
+Bangalore = set(BangaloreBeforeSet)
 Bangalore = sorted(Bangalore)
-
+print(len(Bangalore))
 print("The numbers called by people in Bangalore have codes:" + "\n" + str("\n".join(Bangalore)))
 
 BangaloreToBangalore = []
@@ -62,5 +64,5 @@ for call in calls:
         if call[1].startswith("(080)"):
             BangaloreToBangalore.append(call[1])
 
-print('%.2f' % (len(BangaloreToBangalore)/len(Bangalore) * 100) +
+print('%.2f' % (len(BangaloreToBangalore)/len(BangaloreBeforeSet) * 100) +
 " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
