@@ -29,6 +29,7 @@ with open('calls.csv', 'r') as f:
 callOut = []
 callIn = []
 textsOutAndIn = []
+
 for call in calls:
     callOut.append(call[0])
     callIn.append(call[1])
@@ -40,6 +41,9 @@ for text in texts:
 callOut = set(callOut)
 callIn = set(callIn)
 textsOutAndIn = set(textsOutAndIn)
+
 MarketerNumber = callOut - callIn - textsOutAndIn
 MarketerNumber = set(MarketerNumber)
+MarketerNumber = sorted(MarketerNumber)
+
 print("These numbers could be telemarketers: " + "\n" + str("\n".join(MarketerNumber)))
