@@ -5,7 +5,7 @@ import codecs
 
 def getMovieUrl(category, location):
     url = "https://movie.douban.com/tag/#/?sort=S&range=9,10&tags=电影"
-    resultUrl = url + "," + category + "," = location
+    resultUrl = url + "," + category + "," + location
     return resultUrl
 
 class Movie:
