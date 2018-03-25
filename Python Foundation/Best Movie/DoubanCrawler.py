@@ -9,24 +9,22 @@ def getMovieUrl(category, location):
     return resultUrl
 
 class Movie:
-    def _init_(yins, name, rate, location, category, info_link, cover_link):
-        yins.name = name
-        yins.rate = rate
-        yins.location = location
-        yins.category = category
-        yins.info_link = info_link
-        yins.cover_link = cover_link
-    def print_data(yins):
-        return "{},{},{},{},{},{}".format(yins.name, yins.rate, yins.location,
-        yins.category, yins.info_link, yins.cover_link)
+    def __init__(self, name, rate, location, category, info_link, cover_link):
+        self.name = name
+        self.rate = rate
+        self.location = location
+        self.category = category
+        self.info_link = info_link
+        self.cover_link = cover_link
+    def print_data(self):
+        return "{},{},{},{},{},{}".format(self.name, self.rate, self.location, self.category, self.info_link, self.cover_link)
 
     def getMovies(category, location):
         movies = []
         for loc in location:
             html = expanddouban.getHtml(getMovieUrl(category, loc))
             soup = BeautifulSoup(html, "html.parser")
-            content_a = soup.find(id="content").find(class_="list-wp").find_all(
-            "a",recursive=False)
+            content_a = soup.find(id="content").find(class_="list-wp").find_all("a",recursive=False)
             for element in content_a:
                 movie_name = element.find(class_="title").string
                 movie_rate = element.find(class_="rate").string
@@ -75,14 +73,12 @@ def putMax(yinslist):
         while i < len(max_tuple):
             element = max_tuple[i]
             ele = str(element)
-            e = "{}占百分之{},排名{}".format(ele[2:ele.index(",") - 1],
-            ele[ele.index(",") + 2:-3], i + 1)
+            e = "{}占百分之{},排名{}".format(ele[2:ele.index(",") - 1], ele[ele.index(",") + 2:-3], i + 1)
             i += 1
             result_list.append(e)
         return result_list
 
-    max_list = [turnTostr(putMax(yins_list1)), turnTostr(putMax(yins_list2)),
-    turnTostr(putMax(yins_list3))]
+    max_list = [turnTostr(putMax(yins_list1)), turnTostr(putMax(yins_list2)), turnTostr(putMax(yins_list3))]
 
     f = open("output.txt", "w")
     f.write("科幻、青春、音乐")
@@ -97,3 +93,4 @@ def putMax(yinslist):
         j += 1
 
     f.close()
+
