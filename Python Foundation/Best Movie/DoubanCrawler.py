@@ -19,7 +19,7 @@ class Movie:
     def print_data(self):
         return "{},{},{},{},{},{}".format(self.name, self.rate, self.location, self.category, self.info_link, self.cover_link)
 
-    def getMovies(category, location):
+def getMovies(category, location):
         movies = []
         for loc in location:
             html = expanddouban.getHtml(getMovieUrl(category, loc))
@@ -37,9 +37,11 @@ class Movie:
         return movies
 
 category_list = ["科幻", "青春", "音乐"]
-location_list = ["大陆", "美国", "香港", "台湾", "日本", "韩国", "英国", "法国",
-"德国", "意大利", "西班牙", "印度", "泰国", "俄罗斯", "伊朗", "加拿大", "澳大利亚",
-"爱尔兰", "瑞典", "巴西", "丹麦"]
+location_list = {i: 0 for i in location_list}
+{"大陆":0, "美国":0, "香港":0, "台湾":0, "日本":0, "韩国":0,
+"英国":0, "法国":0, "德国":0, "意大利":0, "西班牙":0, "印度":0, "泰国":0,
+"俄罗斯":0, "伊朗":0, "加拿大":0, "澳大利亚":0, "爱尔兰":0, "瑞典":0, "巴西":0,
+"丹麦":0}
 
 yins_list1 = getMovies("科幻", location_list)
 yins_list2 = getMovies("青春", location_list)
@@ -61,7 +63,7 @@ def putMax(yinslist):
     total = 0
     for movie in yinslist:
         for loc in location_list:
-            if loc in movies:
+            if loc in input_dict:
                 input_dict[loc] += 1
     for idict in input_input:
         input_dict[idict] = round((input_dict[idict]/total)*100,2)
@@ -93,4 +95,3 @@ def putMax(yinslist):
         j += 1
 
     f.close()
-
