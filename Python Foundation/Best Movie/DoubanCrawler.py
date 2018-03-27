@@ -19,29 +19,45 @@ class Movie:
     def print_data(self):
         return "{},{},{},{},{},{}".format(self.name, self.rate, self.location, self.category, self.info_link, self.cover_link)
 
+
+def getHtml(url, loadmore = True, waittime = 2):
+    browser = webdriver.Chrome('chromedriver')
+    browser.get(url)
+    time.sleep(waittime)
+    if loadmore:
+        while True:
+            try:
+                next_button = browser.find_element_by_class_name("more")
+                next_button.click()
+                time.sleep(waittime)
+            except:
+                break
+    html = browser.page_source
+    browser.quit()
+    return html
+
+
 def getMovies(category, location):
-        movies = []
-        for loc in location:
-            html = expanddouban.getHtml(getMovieUrl(category, loc))
-            soup = BeautifulSoup(html, "html.parser")
-            content_a = soup.find(id="content").find(class_="list-wp").find_all("a",recursive=False)
-            for element in content_a:
-                movie_name = element.find(class_="title").string
-                movie_rate = element.find(class_="rate").string
-                movie_location = loc
-                movie_category = category
-                movie_info_link = element.get("href")
-                movie_cover_link = element.find("img").get("src")
-                movies.append(Movie(movie_name, movie_rate, movie_location,
-                movie_category, movie_info_link, movie_cover_link).print_data())
-        return movies
+    movies = []
+    for loc in location:
+        html = expanddouban.getHtml(getMovieUrl(category, loc))
+        soup = BeautifulSoup(html, "html.parser")
+        content_a = soup.find(id="content").find(class_="list-wp").find_all("a",recursive=False)
+        for element in content_a:
+            movie_name = element.find(class_="title").string
+            movie_rate = element.find(class_="rate").string
+            movie_location = loc
+            movie_category = category
+            movie_info_link = element.get("href")
+            movie_cover_link = element.find("img").get("src")
+            movies.append(Movie(movie_name, movie_rate, movie_location,
+            movie_category, movie_info_link, movie_cover_link).print_data())
+    return movies
 
 category_list = ["科幻", "青春", "音乐"]
-location_list = {i: 0 for i in location_list}
-{"大陆":0, "美国":0, "香港":0, "台湾":0, "日本":0, "韩国":0,
-"英国":0, "法国":0, "德国":0, "意大利":0, "西班牙":0, "印度":0, "泰国":0,
-"俄罗斯":0, "伊朗":0, "加拿大":0, "澳大利亚":0, "爱尔兰":0, "瑞典":0, "巴西":0,
-"丹麦":0}
+location_list = ["大陆", "美国", "香港", "台湾", "日本", "韩国", "英国", "法国",
+"德国", "意大利", "西班牙", "印度", "泰国", "俄罗斯", "伊朗", "加拿大", "澳大利亚",
+"爱尔兰", "瑞典", "巴西", "丹麦"]
 
 yins_list1 = getMovies("科幻", location_list)
 yins_list2 = getMovies("青春", location_list)
@@ -63,7 +79,7 @@ def putMax(yinslist):
     total = 0
     for movie in yinslist:
         for loc in location_list:
-            if loc in input_dict:
+            if loc in movies:
                 input_dict[loc] += 1
     for idict in input_input:
         input_dict[idict] = round((input_dict[idict]/total)*100,2)
