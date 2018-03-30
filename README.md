@@ -6,4 +6,6 @@ Python Foundation
 
 
 Machine Learning Foundation
-1. Examination of psychological phenomena
+1. Test a Perceptual Phenomenon
+2. Create a Movie Website
+3. Linear Regression 
