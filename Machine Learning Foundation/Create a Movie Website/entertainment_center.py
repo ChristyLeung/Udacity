@@ -1,19 +1,21 @@
 import fresh_tomatoes
 import media
+
 Harry_Potter = media.Movie("Harry Potter",
-	                 "The Boy Who Lived.",
-	                 "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/Harry_Potter_and_the_Philosopher%27s_Stone_posters.JPG/220px-Harry_Potter_and_the_Philosopher%27s_Stone_posters.JPG",
-	                 "http://player.youku.com/player.php/sid/XMzQ3OTE5NDU2/v.swf")
+	                   "The Boy Who Lived.",
+	                   "http://i3.hexunimg.cn/2014-03-13/162998912.jpg",
+	                   "https://v.youku.com/v_show/id_XMzQ3OTE5NDU2.html?spm=a2h0k.8191407.0.0&from=s1.8-3-1.1")
 #creat the instance
 Divergent = media.Movie("Divergent",
-	                 "Beyond five factions.",
-	                 "https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Divergent.jpg/220px-Divergent.jpg",
-	                 "http://player.youku.com/player.php/sid/XNjY5ODE1MjE2/v.swf")
+	                   "Beyond five factions.",
+	                   "http://www.nsmovie.com/data/2010/s/www.sz100722.com/db_pictures/201408/29/1409282076152163.jpg",
+	                   "https://v.youku.com/v_show/id_XNjY5ODE1MjE2.html?spm=a2h0k.8191407.0.0&from=s1.8-3-1.1")
 
 Lucy = media.Movie("Lucy",
-	                 "Everything is connected and existence is only proven through time.",
-	                 "https://upload.wikimedia.org/wikipedia/en/thumb/1/14/Lucy_%282014_film%29_poster.jpg/220px-Lucy_%282014_film%29_poster.jpg",
-	                 "http://player.youku.com/player.php/sid/XNjkzNzkyNjA0/v.swf")
+	                   "Everything is connected and existence is only proven through time.",
+	                   "http://www.suanning.com/uploadfile/2014/1102/20141102100428833.jpg",
+	                   "https://v.youku.com/v_show/id_XNjkzNzkyNjA0.html?spm=a2h0k.8191407.0.0&from=s1.8-3-1.1")
+
 
 """
 Harry_Potter.show_trailer()
