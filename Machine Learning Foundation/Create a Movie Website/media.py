@@ -1,4 +1,6 @@
+# -*- coding:utf-8 -*- 
 import webbrowser
+
 
 class Movie():
 	def __init__(self, movie_title, movie_storyline, poster_image, trailer_youtube):
@@ -9,3 +11,6 @@ class Movie():
 	#instance method
 	def show_trailer(self):
 		webbrowser.open(self.trailer_url)
+"""
+函数调用，为电影网站的特定对象初始化这些属性值，声明它们的属性
+"""

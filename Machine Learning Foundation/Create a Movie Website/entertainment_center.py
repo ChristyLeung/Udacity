@@ -1,3 +1,7 @@
+"""
+调用fresh_tomatoes中函数设计网页框架
+"""
+
 import fresh_tomatoes
 import media
 
