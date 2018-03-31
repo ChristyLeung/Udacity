@@ -19,24 +19,7 @@ class Movie:
     def print_data(self):
         return "{},{},{},{},{},{}".format(self.name, self.rate, self.location, self.category, self.info_link, self.cover_link)
 
-
-def getHtml(url, loadmore = True, waittime = 2):
-    browser = webdriver.Chrome('chromedriver')
-    browser.get(url)
-    time.sleep(waittime)
-    if loadmore:
-        while True:
-            try:
-                next_button = browser.find_element_by_class_name("more")
-                next_button.click()
-                time.sleep(waittime)
-            except:
-                break
-    html = browser.page_source
-    browser.quit()
-    return html
-
-
+movies = []
 def getMovies(category, location):
     movies = []
     for loc in location:
@@ -79,35 +62,36 @@ def putMax(yinslist):
     total = 0
     for movie in yinslist:
         for loc in location_list:
-            if loc in movies:
+            if loc in movie:
                 input_dict[loc] += 1
-    for idict in input_input:
+                total += 1
+    for idict in input_dict:
         input_dict[idict] = round((input_dict[idict]/total)*100,2)
     return sorted(input_dict.items(), key=lambda x:x[1], reverse=True)[:3]
 
-    def turnTostr(max_tuple):
-        result_list = []
-        i = 0
-        while i < len(max_tuple):
-            element = max_tuple[i]
-            ele = str(element)
-            e = "{}占百分之{},排名{}".format(ele[2:ele.index(",") - 1], ele[ele.index(",") + 2:-3], i + 1)
-            i += 1
-            result_list.append(e)
-        return result_list
+def turnTostr(max_tuple):
+    result_list = []
+    i = 0
+    while i < len(max_tuple):
+        element = max_tuple[i]
+        ele = str(element)
+        e = "{}占百分之{},排名{}".format(ele[2:ele.index(",") - 1], ele[ele.index(",") + 2:-3], i + 1)
+        i += 1
+        result_list.append(e)
+    return result_list
 
-    max_list = [turnTostr(putMax(yins_list1)), turnTostr(putMax(yins_list2)), turnTostr(putMax(yins_list3))]
+max_list = [turnTostr(putMax(yins_list1)), turnTostr(putMax(yins_list2)), turnTostr(putMax(yins_list3))]
 
-    f = open("output.txt", "w")
-    f.write("科幻、青春、音乐")
-    j = 0
-    while j < len(category_list):
-        f.write("{}类别电影数量排名前三的地区和百分比为: \n".format(category_list[j]))
-        i = 0
-        while i < len(max_list[j]):
-            f.write(max_list[j][i])
-            f.write("\n")
-            i += 1
-        j += 1
+f = open("output.txt", "w")
+f.write("科幻、青春、音乐")
+j = 0
+while j < len(category_list):
+    f.write("{}类别电影数量排名前三的地区和百分比为: \n".format(category_list[j]))
+    i = 0
+    while i < len(max_list[j]):
+        f.write(max_list[j][i])
+        f.write("\n")
+        i += 1
+    j += 1
 
-    f.close()
+f.close()
