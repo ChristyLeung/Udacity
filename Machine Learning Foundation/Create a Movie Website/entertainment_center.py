@@ -8,7 +8,7 @@ Harry_Potter = media.Movie("Harry Potter",
 #creat the instance
 Divergent = media.Movie("Divergent",
 	                   "Beyond five factions.",
-	                   "http://www.nsmovie.com/data/2010/s/www.sz100722.com/db_pictures/201408/29/1409282076152163.jpg",
+	                   "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=166130579,2736602097&fm=27&gp=0.jpg",
 	                   "https://v.youku.com/v_show/id_XNjY5ODE1MjE2.html?spm=a2h0k.8191407.0.0&from=s1.8-3-1.1")
 
 Lucy = media.Movie("Lucy",
