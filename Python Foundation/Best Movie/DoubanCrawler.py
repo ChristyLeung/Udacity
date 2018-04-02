@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-  
 import expanddouban
 from bs4 import BeautifulSoup
 import csv
@@ -23,7 +24,7 @@ movies = []
 def getMovies(category, location):
     movies = []
     for loc in location:
-        html = expanddouban.getHtml(getMovieUrl(category, loc))
+        html = expanddouban.getHtml(getMovieUrl(category, loc),True)
         soup = BeautifulSoup(html, "html.parser")
         content_a = soup.find(id="content").find(class_="list-wp").find_all("a",recursive=False)
         for element in content_a:
@@ -82,7 +83,7 @@ def turnTostr(max_tuple):
 
 max_list = [turnTostr(putMax(yins_list1)), turnTostr(putMax(yins_list2)), turnTostr(putMax(yins_list3))]
 
-f = open("output.txt", "w")
+f = open("output.txt", "w", encoding = "utf_8_sig")
 f.write("科幻、青春、音乐")
 j = 0
 while j < len(category_list):
