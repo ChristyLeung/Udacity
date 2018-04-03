@@ -9,3 +9,4 @@ Machine Learning Foundation
 1. Test a Perceptual Phenomenon
 2. Create a Movie Website
 3. Linear Regression 
+4. Investigate a Dataset
