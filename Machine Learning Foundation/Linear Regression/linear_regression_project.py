@@ -47,10 +47,11 @@ C = [[1],
      [3]]
 
 #TODO 创建一个 4*4 单位矩阵
-I = [[1,2,3,5],
-    [2,3,3,5],
-    [1,2,5,1],
-    [3,5,2,1]]
+I1 = [1], 
+I2 = [[1,0], [0,1]], 
+I3 = [[1,0,0], [0,1,0], [0,0,1]], 
+I4=[[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]],
+... 
 
 
 # ## 1.2 返回矩阵的行数和列数
@@ -81,7 +82,6 @@ def matxRound(M, decPts=4):
     for i in range(len(M)):
         for j in range(len(M[i])):
              M[i][j] = round(M[i][j],decPts)
-    pass
 
 
 # In[6]:
@@ -98,13 +98,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # TODO 计算矩阵的转置
 def transpose(M):
-    result = []
-    for j in range(len(M[0])):
-        row = []
-        for i in range(len(M)):
-            row.append(M[i][j])
-        result.append(row)
-    return result
+    return [list(col) for col in zip(*M)]
 
 
 # In[8]:
@@ -209,7 +203,6 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 # 直接修改参数矩阵，无返回值
 def swapRows(M, r1, r2):
     M[r1],M[r2] = M[r2],M[r1]
-    pass
 
 
 # In[14]:
@@ -230,7 +223,6 @@ def scaleRow(M, r, scale):
         raise ValueError('the parameter scale can not be zero')
     else:
         M[r] = [scale*i for i in M[r]]
-    pass
 
 
 # In[16]:
@@ -252,7 +244,6 @@ def addScaledRow(M, r1, r2, scale):
         M[r1] = [M[r1][i] + scale * M[r2][i] for i in range(len(M[r2]))]
     else:
         raise IndexError("list index out of range")
-    pass
 
 
 # In[18]:
@@ -416,26 +407,50 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
     返回None，如果 A，b 高度不同
     返回None，如果 A 为奇异矩阵
 """
+from decimal import Decimal
+from fractions import Fraction
+
 def gj_Solve(A, b, decPts=4, epsilon=1.0e-16):
 # 检查A,b是否行数相同
-    if len(A)!= len(b):
+    if (len(A) != len(b)):
         return None
 
 # 构造增广矩阵Ab
-    AB = augmentMatrix(A,b)
+    result = augmentMatrix(A, b)
 
 # 逐列转换Ab为简化行阶梯形矩阵
-    for c in range (A,b-1):
-        max_val = max(abs(c-N))
-        max_row = cur_row
-    if max_val < epsilon:
-        return None
-        swapRows(Ab,c,max_row)
-    for r in range(A,b):
-        addScaleRow(Ab,r,c -Ab[r][c])   
+    for j in range(len(result[0])-1):  
+        row,maxNum = 0,0    
+        for i in range(len(result)):
+            if i >= j:
+                if abs(result[i][j]) > maxNum:
+                    maxNum = abs(result[i][j])
+                    row = i
+# 返回奇异矩阵
+        if (abs(maxNum) < epsilon):
+            return None
+        else:
+            
+# 找出最大放到最上面
+            if(row != j):
+                swapRows(result,j,row)
+                row,maxNum = 0,0 
+        scaleRow(result,j,Fraction(1,result[j][j]))
         
+# 消除下面
+        for dis in range(len(result)):          
+            if dis != j:
+                if abs(-result[dis][j]) > epsilon:
+                    addScaledRow(result,dis,j,-result[dis][j])
+                
+        newResult =[]
+        for i in range(len(result)):
+            row =[]
+            row.append(result[i][len(result)])
+            newResult.append(row)
+            
 # 返回Ab的最后一列
-    return (matxRound)
+    return newResult
 
 
 # In[22]:
@@ -492,8 +507,8 @@ vs_scatter_2d(X, Y)
 
 
 #TODO 请选择最适合的直线 y = mx + b
-m1 = 7.0
-b1 = 3.0
+m1 = -3.0
+b1 = 8.0
 
 # 不要修改这里！
 vs_scatter_2d(X, Y, m1, b1)
