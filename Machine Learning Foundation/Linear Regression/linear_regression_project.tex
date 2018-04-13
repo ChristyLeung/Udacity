@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{linear\_regression\_project 2}
+    \title{linear\_regression\_project 3.5}
     
     
     
@@ -297,7 +297,7 @@ Section \ref{3-线性回归}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} 任意选一个你喜欢的整数，这能帮你得到稳定的结果}
-        \PY{n}{seed} \PY{o}{=} \PY{l+m+mi}{7} \PY{c+c1}{\PYZsh{} TODO}
+        \PY{n}{seed} \PY{o}{=} \PY{l+m+mi}{9999} \PY{c+c1}{\PYZsh{} TODO}
 \end{Verbatim}
 
 
@@ -326,18 +326,13 @@ Section \ref{3-线性回归}
              \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
         
         \PY{c+c1}{\PYZsh{}TODO 创建一个 4*4 单位矩阵}
-        \PY{n}{I1} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} 
-        \PY{n}{I2} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{,} 
-        \PY{n}{I3} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{,} 
-        \PY{n}{I4}\PY{o}{=}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{,}
-        \PY{o}{.}\PY{o}{.}\PY{o}{.} 
+        \PY{n}{I} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:} Ellipsis
-\end{Verbatim}
-            
     \subsection{1.2
 返回矩阵的行数和列数}\label{ux8fd4ux56deux77e9ux9635ux7684ux884cux6570ux548cux5217ux6570}
 
@@ -357,7 +352,7 @@ Section \ref{3-线性回归}
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.022s
+Ran 1 test in 0.014s
 
 OK
 
@@ -371,8 +366,8 @@ OK
         \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
         \PY{k}{def} \PY{n+nf}{matxRound}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{decPts}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{n}{decPts}\PY{p}{)}
+                \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{n}{decPts}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -385,7 +380,7 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.015s
+Ran 1 test in 0.012s
 
 OK
 
@@ -397,7 +392,9 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} TODO 计算矩阵的转置}
         \PY{k}{def} \PY{n+nf}{transpose}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{p}{[}\PY{n+nb}{list}\PY{p}{(}\PY{n}{col}\PY{p}{)} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{M}\PY{p}{)}\PY{p}{]}
+            \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{M}\PY{p}{)}
+            \PY{n}{MT} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{row}\PY{p}{[}\PY{n}{col}\PY{p}{]} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{M}\PY{p}{]} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{p}{)}\PY{p}{]}
+            \PY{k}{return} \PY{n}{MT}
 \end{Verbatim}
 
 
@@ -410,7 +407,7 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.013s
+Ran 1 test in 0.012s
 
 OK
 
@@ -449,7 +446,7 @@ AB}\label{ux8ba1ux7b97ux77e9ux9635ux4e58ux6cd5-ab}
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.120s
+Ran 1 test in 0.122s
 
 OK
 
@@ -499,17 +496,7 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} TODO 构造增广矩阵，假设A，b行数相同}
          \PY{k}{def} \PY{n+nf}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
-             \PY{k}{if}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)} \PY{o}{!=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                 \PY{k}{raise} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{The number of rows is different}\PY{l+s+s2}{\PYZdq{}}
-             \PY{n}{result} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{row} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-                 \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{row}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{A}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
-                 \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{row}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
-                 \PY{n}{result}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{row}\PY{p}{)}
-             \PY{k}{return} \PY{n}{result}
+             \PY{k}{return} \PY{p}{[}\PY{n}{row\PYZus{}a} \PY{o}{+} \PY{n}{row\PYZus{}b} \PY{k}{for} \PY{n}{row\PYZus{}a}\PY{p}{,} \PY{n}{row\PYZus{}b} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
@@ -522,7 +509,7 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.012s
+Ran 1 test in 0.008s
 
 OK
 
@@ -568,10 +555,9 @@ OK
          \PY{c+c1}{\PYZsh{} scale为0是非法输入，要求 raise ValueError}
          \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
          \PY{k}{def} \PY{n+nf}{scaleRow}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{scale}\PY{p}{)}\PY{p}{:}
-             \PY{k}{if} \PY{o+ow}{not} \PY{n}{scale}\PY{p}{:}
-                 \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{the parameter scale can not be zero}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-             \PY{k}{else}\PY{p}{:}
-                 \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{scale}\PY{o}{*}\PY{n}{i} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{p}{]}
+             \PY{k}{if} \PY{n}{scale} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                 \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scale CANNOT be 0}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{e} \PY{o}{*} \PY{n}{scale} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
@@ -593,13 +579,8 @@ OK
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} TODO r1 \PYZlt{}\PYZhy{}\PYZhy{}\PYZhy{} r1 + r2*scale}
          \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
-         \PY{k}{def} \PY{n+nf}{addScaledRow}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r1}\PY{p}{,} \PY{n}{r2}\PY{p}{,} \PY{n}{scale}\PY{p}{)}\PY{p}{:}
-             \PY{k}{if} \PY{o+ow}{not} \PY{n}{scale}\PY{p}{:}
-                 \PY{k}{raise} \PY{n+ne}{ValueError}
-             \PY{k}{if} \PY{p}{(}\PY{l+m+mi}{0} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{r1} \PY{o}{\PYZlt{}} \PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{)} \PY{o+ow}{and} \PY{p}{(}\PY{l+m+mi}{0} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{r2} \PY{o}{\PYZlt{}} \PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                 \PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{+} \PY{n}{scale} \PY{o}{*} \PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{]}
-             \PY{k}{else}\PY{p}{:}
-                 \PY{k}{raise} \PY{n+ne}{IndexError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{list index out of range}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{addScaledRow}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r1}\PY{p}{,} \PY{n}{r2}\PY{p}{,} \PY{n}{scale}\PY{p}{)}\PY{p}{:} 
+             \PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{e1} \PY{o}{+} \PY{n}{e2} \PY{o}{*} \PY{n}{scale} \PY{k}{for} \PY{n}{e1}\PY{p}{,} \PY{n}{e2} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]}\PY{p}{,} \PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
@@ -709,9 +690,9 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-  5, -6, -7 ||  1 
-  9, -3,  4 ||  1 
- -2,  4,  0 ||  1 
+  7,  5,  3 ||  1 
+ -5, -4,  6 ||  1 
+  2, -2, -9 ||  1 
 
     \end{Verbatim}
 
@@ -722,29 +703,26 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
 \$ Ab =
 
 \begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
+    7 & 5 & 3 & 1 \\
+    -5 & -4 & 6 & 1 \\
+    2 & -2 & -9 & 1 \end{bmatrix}
 
 \$
 
 \$ -\/-\textgreater{}
 
 \begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
+    1 & \frac{5}{7} & \frac{3}{7} & \frac{1}{7} \\
+    0 & -\frac{3}{35} & \frac{57}{35} & \frac{12}{35} \\
+    0 & \frac{12}{7} & \frac{69}{14} & \frac{5}{14}\end{bmatrix}
 
 \$
 
-\$ -\/-\textgreater{}
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & \frac{3}{7} & \frac{43}{75}\\  0 & 1 & \frac{57}{35} & -\frac{53}{75}\\  0 & 0 & \frac{69}{14} & \frac{13}{75}\end{bmatrix}\)
 
-\begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
-
-\$
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & 0 & \frac{43}{75}\\  0 & 1 & 0 & -\frac{53}{75}\\  0 & 0 & 1 & \frac{13}{75}\end{bmatrix}\)
 
 \(...\)
 
@@ -758,9 +736,9 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-  0,  9,  8 ||  1 
-  0, -6,  7 ||  1 
-  0,  6,  6 ||  1 
+ -1,  6, -8 ||  1 
+-10, -5,  5 ||  1 
+ -9,  2, -4 ||  1 
 
     \end{Verbatim}
 
@@ -771,29 +749,23 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
 \$ Ab =
 
 \begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
+    -1 & 6 & -8 & 1 \\
+    -10 & -5 & 5 & 1 \\
+    -9 & 2 & -4 & 1 \end{bmatrix}
 
 \$
 
 \$ -\/-\textgreater{}
 
 \begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
+    1 & -6 & 8 & 0 \\
+    0 & \frac{1}{2} & -\frac{1}{2} & 0 \\
+    0 & \frac{2}{9} & -\frac{4}{9} & 0 \end{bmatrix}
 
 \$
 
-\$ -\/-\textgreater{}
-
-\begin{bmatrix}
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 \end{bmatrix}
-
-\$
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & \frac{8}{13} & 0 \\  0 & 1 & -\frac{17}{13} & 0 \\  0 & 0 & 0 & 1 \end{bmatrix}\)
 
 \(...\)
 
@@ -823,46 +795,119 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
                  \PY{k}{return} \PY{k+kc}{None}
          
          \PY{c+c1}{\PYZsh{} 构造增广矩阵Ab}
-             \PY{n}{result} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+             \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}
          
          \PY{c+c1}{\PYZsh{} 逐列转换Ab为简化行阶梯形矩阵}
-             \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}  
-                 \PY{n}{row}\PY{p}{,}\PY{n}{maxNum} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}    
-                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{k}{if} \PY{n}{i} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{j}\PY{p}{:}
-                         \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{result}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{maxNum}\PY{p}{:}
-                             \PY{n}{maxNum} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{result}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
-                             \PY{n}{row} \PY{o}{=} \PY{n}{i}
-         \PY{c+c1}{\PYZsh{} 返回奇异矩阵}
-                 \PY{k}{if} \PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{maxNum}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{epsilon}\PY{p}{)}\PY{p}{:}
-                     \PY{k}{return} \PY{k+kc}{None}
-                 \PY{k}{else}\PY{p}{:}
-                     
-         \PY{c+c1}{\PYZsh{} 找出最大放到最上面}
-                     \PY{k}{if}\PY{p}{(}\PY{n}{row} \PY{o}{!=} \PY{n}{j}\PY{p}{)}\PY{p}{:}
-                         \PY{n}{swapRows}\PY{p}{(}\PY{n}{result}\PY{p}{,}\PY{n}{j}\PY{p}{,}\PY{n}{row}\PY{p}{)}
-                         \PY{n}{row}\PY{p}{,}\PY{n}{maxNum} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0} 
-                 \PY{n}{scaleRow}\PY{p}{(}\PY{n}{result}\PY{p}{,}\PY{n}{j}\PY{p}{,}\PY{n}{Fraction}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{result}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+             \PY{n}{rows}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} TODO}
+             \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
                  
-         \PY{c+c1}{\PYZsh{} 消除下面}
-                 \PY{k}{for} \PY{n}{dis} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}\PY{p}{:}          
-                     \PY{k}{if} \PY{n}{dis} \PY{o}{!=} \PY{n}{j}\PY{p}{:}
-                         \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{result}\PY{p}{[}\PY{n}{dis}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{epsilon}\PY{p}{:}
-                             \PY{n}{addScaledRow}\PY{p}{(}\PY{n}{result}\PY{p}{,}\PY{n}{dis}\PY{p}{,}\PY{n}{j}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{result}\PY{p}{[}\PY{n}{dis}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
-                         
-                 \PY{n}{newResult} \PY{o}{=}\PY{p}{[}\PY{p}{]}
-                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-                     \PY{n}{row} \PY{o}{=}\PY{p}{[}\PY{p}{]}
-                     \PY{n}{row}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{result}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{]}\PY{p}{)}
-                     \PY{n}{newResult}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{row}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{}转置后迭代更加方便}
+                 \PY{n}{AbT} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+                 \PY{n}{col} \PY{o}{=} \PY{n}{AbT}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}列c(转置后的行c)中，c\PYZti{}N行（转置后的c\PYZti{}N列），每一个元素的绝对值列表}
+                 \PY{n}{abs\PYZus{}cn} \PY{o}{=} \PY{p}{[}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{e}\PY{p}{)} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{col}\PY{p}{[}\PY{n}{c}\PY{p}{:}\PY{p}{]}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}绝对值列表的最大值}
+                 \PY{n}{max\PYZus{}abs} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{abs\PYZus{}cn}\PY{p}{)}
+                 \PY{n}{max\PYZus{}index} \PY{o}{=} \PY{n}{abs\PYZus{}cn}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{max\PYZus{}abs}\PY{p}{)} \PY{o}{+} \PY{n}{c}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}value = col[max\PYZus{}index]}
+                 \PY{c+c1}{\PYZsh{}因为精度的问题，所以绝对值最大值小于 epsilon 就看作是等于 0}
+                 \PY{k}{if} \PY{n}{max\PYZus{}abs} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{epsilon}\PY{p}{:}
+                     \PY{k}{return} \PY{k+kc}{None}
+         
+                 \PY{c+c1}{\PYZsh{}最大值所在行（转置后的列）}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}index = abs\PYZus{}cn.index(max\PYZus{}value) + c}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c）}
+                 \PY{n}{swapRows}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{max\PYZus{}index}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第二个行变换，将列c的对角线元素缩放为1}
+                 \PY{n}{scale\PYZus{}c} \PY{o}{=} \PY{l+m+mf}{1.0} \PY{o}{/} \PY{n}{Ab}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 \PY{n}{scaleRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{scale\PYZus{}c}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}多次使用第三个行变换，将列c的其他元素消为0}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{if} \PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]} \PY{o}{!=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{i} \PY{o}{!=} \PY{n}{c}\PY{p}{:}
+                         \PY{n}{addScaledRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{i}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{)}
+             
+             \PY{n}{matxRound}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}            
                      
          \PY{c+c1}{\PYZsh{} 返回Ab的最后一列}
-             \PY{k}{return} \PY{n}{newResult}
+             \PY{k}{return} \PY{p}{[}\PY{p}{[}\PY{n}{e\PYZus{}last}\PY{p}{]} \PY{k}{for} \PY{n}{e\PYZus{}last} \PY{o+ow}{in} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 gj\PYZus{}Solve 函数}
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} TODO 实现 Gaussain Jordan 方法求解 Ax = b}
+         
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Gaussian Jordan 方法求解 Ax = b.}
+         \PY{l+s+sd}{    参数}
+         \PY{l+s+sd}{        A: 方阵 }
+         \PY{l+s+sd}{        b: 列向量}
+         \PY{l+s+sd}{        decPts: 四舍五入位数，默认为4}
+         \PY{l+s+sd}{        epsilon: 判读是否为0的阈值，默认 1.0e\PYZhy{}16}
+         \PY{l+s+sd}{        }
+         \PY{l+s+sd}{    返回列向量 x 使得 Ax = b }
+         \PY{l+s+sd}{    返回None，如果 A，b 高度不同}
+         \PY{l+s+sd}{    返回None，如果 A 为奇异矩阵}
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+         \PY{k+kn}{from} \PY{n+nn}{decimal} \PY{k}{import} \PY{n}{Decimal}
+         \PY{k+kn}{from} \PY{n+nn}{fractions} \PY{k}{import} \PY{n}{Fraction}
+         
+         \PY{k}{def} \PY{n+nf}{gj\PYZus{}Solve}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{decPts}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{epsilon}\PY{o}{=}\PY{l+m+mf}{1.0e\PYZhy{}16}\PY{p}{)}\PY{p}{:}
+         \PY{c+c1}{\PYZsh{} 检查A,b是否行数相同}
+             
+         
+         \PY{c+c1}{\PYZsh{} 构造增广矩阵Ab}
+             \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} 逐列转换Ab为简化行阶梯形矩阵}
+             \PY{n}{rows}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} TODO}
+             \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                 
+                 \PY{c+c1}{\PYZsh{}转置后迭代更加方便}
+                 \PY{n}{AbT} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+                 \PY{n}{col} \PY{o}{=} \PY{n}{AbT}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}列c(转置后的行c)中，c\PYZti{}N行（转置后的c\PYZti{}N列），每一个元素的绝对值列表}
+                 \PY{n}{abs\PYZus{}cn} \PY{o}{=} \PY{p}{[}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{e}\PY{p}{)} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{col}\PY{p}{[}\PY{n}{c}\PY{p}{:}\PY{p}{]}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}绝对值列表的最大值}
+                 \PY{n}{max\PYZus{}abs} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{abs\PYZus{}cn}\PY{p}{)}
+                 \PY{n}{max\PYZus{}index} \PY{o}{=} \PY{n}{abs\PYZus{}cn}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{max\PYZus{}abs}\PY{p}{)} \PY{o}{+} \PY{n}{c}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}value = col[max\PYZus{}index]}
+                 \PY{c+c1}{\PYZsh{}因为精度的问题，所以绝对值最大值小于 epsilon 就看作是等于 0}
+                 \PY{k}{if} \PY{n}{max\PYZus{}abs} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{epsilon}\PY{p}{:}
+                     \PY{k}{return} \PY{k+kc}{None}
+         
+                 \PY{c+c1}{\PYZsh{}最大值所在行（转置后的列）}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}index = abs\PYZus{}cn.index(max\PYZus{}value) + c}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c）}
+                 \PY{n}{swapRows}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{max\PYZus{}index}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第二个行变换，将列c的对角线元素缩放为1}
+                 \PY{n}{scale\PYZus{}c} \PY{o}{=} \PY{l+m+mf}{1.0} \PY{o}{/} \PY{n}{Ab}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 \PY{n}{scaleRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{scale\PYZus{}c}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}多次使用第三个行变换，将列c的其他元素消为0}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{if} \PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]} \PY{o}{!=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{i} \PY{o}{!=} \PY{n}{c}\PY{p}{:}
+                         \PY{n}{addScaledRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{i}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{)}
+             
+             \PY{n}{matxRound}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}            
+                     
+         \PY{c+c1}{\PYZsh{} 返回Ab的最后一列}
+             \PY{k}{return} \PY{p}{[}\PY{p}{[}\PY{n}{e\PYZus{}last}\PY{p}{]} \PY{k}{for} \PY{n}{e\PYZus{}last} \PY{o+ow}{in} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 gj\PYZus{}Solve 函数}
          \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}gj\PYZus{}Solve
 \end{Verbatim}
 
@@ -870,7 +915,7 @@ Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩
     \begin{Verbatim}[commandchars=\\\{\}]
 .
 ----------------------------------------------------------------------
-Ran 1 test in 77.386s
+Ran 1 test in 4.030s
 
 OK
 
@@ -910,7 +955,7 @@ OK
 随机生成样本点}\label{ux968fux673aux751fux6210ux6837ux672cux70b9}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} 不要修改这里！}
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} 不要修改这里！}
          \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
          \PY{k+kn}{from} \PY{n+nn}{helper} \PY{k}{import} \PY{o}{*}
          
@@ -938,9 +983,9 @@ OK
 猜测一条直线}\label{ux731cux6d4bux4e00ux6761ux76f4ux7ebf}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{}TODO 请选择最适合的直线 y = mx + b}
-         \PY{n}{m1} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mf}{3.0}
-         \PY{n}{b1} \PY{o}{=} \PY{l+m+mf}{8.0}
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{}TODO 请选择最适合的直线 y = mx + b}
+         \PY{n}{m1} \PY{o}{=} \PY{l+m+mi}{3}
+         \PY{n}{b1} \PY{o}{=} \PY{l+m+mi}{13}
          
          \PY{c+c1}{\PYZsh{} 不要修改这里！}
          \PY{n}{vs\PYZus{}scatter\PYZus{}2d}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{m1}\PY{p}{,} \PY{n}{b1}\PY{p}{)}
@@ -968,7 +1013,7 @@ MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 \]
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{} TODO 实现以下函数并输出所选直线的MSE}
+{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} TODO 实现以下函数并输出所选直线的MSE}
          \PY{k}{def} \PY{n+nf}{calculateMSE2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{)}\PY{p}{:}
              \PY{k}{return}  \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{y}\PY{o}{\PYZhy{}}\PY{n}{m}\PY{o}{*}\PY{n}{x} \PY{o}{\PYZhy{}}\PY{n}{b}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x}\PY{p}{,}\PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)} 
          
@@ -978,7 +1023,7 @@ MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-1.6246318698208364
+1.2004601832217412
 
     \end{Verbatim}
 
@@ -1113,18 +1158,41 @@ Equation}，也有直观的几何意义。你可以在
 (如果你选择不做3.3，就勇敢的相信吧，哈哈)
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} TODO 实现线性回归}
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} TODO 实现线性回归}
          \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
          \PY{l+s+sd}{参数：X, Y 存储着一一对应的横坐标与纵坐标的两个一维数组}
          \PY{l+s+sd}{返回：线性回归的系数(如上面所说的 m, b)}
          \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
-         \PY{k}{def} \PY{n+nf}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:}
-             \PY{k}{return} \PY{l+m+mf}{0.}\PY{p}{,}\PY{l+m+mf}{0.}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} 请不要修改下面的代码}
+         \PY{k}{def} \PY{n+nf}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:} 
+             \PY{c+c1}{\PYZsh{} 一维数组X转矩阵}
+             \PY{n}{matxX} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{X}\PY{p}{]}
+             \PY{c+c1}{\PYZsh{} 矩阵转置}
+             \PY{n}{transX} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{matxX}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} 矩阵相乘}
+             \PY{n}{matxA} \PY{o}{=} \PY{n}{matxMultiply}\PY{p}{(}\PY{n}{transX}\PY{p}{,} \PY{n}{matxX}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 一维数组Y转矩阵}
+             \PY{n}{matxY} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{y}\PY{p}{]} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{Y}\PY{p}{]}
+             \PY{c+c1}{\PYZsh{} 矩阵相乘}
+             \PY{n}{matxb} \PY{o}{=} \PY{n}{matxMultiply}\PY{p}{(}\PY{n}{transX}\PY{p}{,} \PY{n}{matxY}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 高斯消元求解}
+             \PY{n}{gj\PYZus{}result} \PY{o}{=} \PY{n}{gj\PYZus{}Solve}\PY{p}{(}\PY{n}{matxA}\PY{p}{,} \PY{n}{matxb}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}     print(gj\PYZus{}result)}
+         
+             \PY{n}{m}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}
+         
+             \PY{k}{if} \PY{o+ow}{not} \PY{n}{gj\PYZus{}result}\PY{p}{:}
+                 \PY{k}{return} \PY{n}{m}\PY{p}{,} \PY{n}{b}
+         
+             \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{gj\PYZus{}result}\PY{p}{)}
+             \PY{k}{if} \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                 \PY{n}{m} \PY{o}{=} \PY{n}{gj\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{if} \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{:}
+                 \PY{n}{b} \PY{o}{=} \PY{n}{gj\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{return} \PY{n}{m}\PY{p}{,} \PY{n}{b}
+         
          \PY{n}{m2}\PY{p}{,}\PY{n}{b2} \PY{o}{=} \PY{n}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}
          \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m is not a float}\PY{l+s+s2}{\PYZdq{}}
          \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{b2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b is not a float}\PY{l+s+s2}{\PYZdq{}}
@@ -1133,14 +1201,28 @@ Equation}，也有直观的几何意义。你可以在
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-0.0 0.0
+3.084 12.6578
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} 请不要修改下面的代码}
+         \PY{n}{m2}\PY{p}{,}\PY{n}{b2} \PY{o}{=} \PY{n}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{b2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n}{b2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3.084 12.6578
 
     \end{Verbatim}
 
     你求得的回归结果是什么？ 请使用运行以下代码将它画出来。
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{}\PYZsh{} 请不要修改下面的代码}
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{}\PYZsh{} 请不要修改下面的代码}
          \PY{n}{vs\PYZus{}scatter\PYZus{}2d}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{m2}\PY{p}{,} \PY{n}{b2}\PY{p}{)}
          \PY{n+nb}{print}\PY{p}{(}\PY{n}{calculateMSE2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{m2}\PY{p}{,}\PY{n}{b2}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
@@ -1159,7 +1241,7 @@ Equation}，也有直观的几何意义。你可以在
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
-120.04319087133581
+1.0209278908110677
 
     \end{Verbatim}
 
@@ -1169,7 +1251,7 @@ Equation}，也有直观的几何意义。你可以在
 你将会在更高维度考验你的线性回归实现
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} 生成三维的数据点}
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} 生成三维的数据点}
          \PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d} \PY{o}{=} \PY{n}{generatePoints3D}\PY{p}{(}\PY{n}{seed}\PY{p}{)}
          \PY{n}{vs\PYZus{}scatter\PYZus{}3d}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{)}
 \end{Verbatim}
@@ -1190,13 +1272,13 @@ Equation}，也有直观的几何意义。你可以在
     你的线性回归是否能够对付三维的情况?
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}30}]:} \PY{k}{def} \PY{n+nf}{linearRegression}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}31}]:} \PY{k}{def} \PY{n+nf}{linearRegression}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:}
              \PY{k}{return} \PY{k+kc}{None}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{coeff} \PY{o}{=} \PY{n}{linearRegression}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{coeff} \PY{o}{=} \PY{n}{linearRegression}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{)}
          \PY{n}{vs\PYZus{}scatter\PYZus{}3d}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{,} \PY{n}{coeff}\PY{p}{)}
 \end{Verbatim}
 
