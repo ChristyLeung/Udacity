@@ -1,0 +1,1303 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{linear\_regression\_project 3.5}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{欢迎来到线性回归项目}\label{ux6b22ux8fceux6765ux5230ux7ebfux6027ux56deux5f52ux9879ux76ee}
+
+若项目中的题目有困难没完成也没关系，我们鼓励你带着问题提交项目，评审人会给予你诸多帮助。
+
+所有选做题都可以不做，不影响项目通过。如果你做了，那么项目评审会帮你批改，也会因为选做部分做错而判定为不通过。
+
+其中非代码题可以提交手写后扫描的 pdf 文件，或使用 Latex
+在文档中直接回答。
+
+    \subsubsection{目录:}\label{ux76eeux5f55}
+
+Section \ref{1-矩阵运算}\\
+Section \ref{2-gaussian-jordan-消元法}\\
+Section \ref{3-线性回归}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} 任意选一个你喜欢的整数，这能帮你得到稳定的结果}
+        \PY{n}{seed} \PY{o}{=} \PY{l+m+mi}{9999} \PY{c+c1}{\PYZsh{} TODO}
+\end{Verbatim}
+
+
+    \section{1 矩阵运算}\label{ux77e9ux9635ux8fd0ux7b97}
+
+\subsection{1.1 创建一个 4*4
+的单位矩阵}\label{ux521bux5efaux4e00ux4e2a-44-ux7684ux5355ux4f4dux77e9ux9635}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} 这个项目设计来帮你熟悉 python list 和线性代数}
+        \PY{c+c1}{\PYZsh{} 你不能调用任何NumPy以及相关的科学计算库来完成作业}
+        
+        
+        \PY{c+c1}{\PYZsh{} 本项目要求矩阵统一使用二维列表表示，如下：}
+        \PY{n}{A} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{]}
+        
+        \PY{n}{B} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{} 向量也用二维列表表示}
+        \PY{n}{C} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{}TODO 创建一个 4*4 单位矩阵}
+        \PY{n}{I} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} 
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+             \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    \subsection{1.2
+返回矩阵的行数和列数}\label{ux8fd4ux56deux77e9ux9635ux7684ux884cux6570ux548cux5217ux6570}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{} TODO 返回矩阵的行数和列数}
+        \PY{k}{def} \PY{n+nf}{shape}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 shape 函数}
+        \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}shape
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{1.3
+每个元素四舍五入到特定小数数位}\label{ux6bcfux4e2aux5143ux7d20ux56dbux820dux4e94ux5165ux5230ux7279ux5b9aux5c0fux6570ux6570ux4f4d}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} TODO 每个元素四舍五入到特定小数数位}
+        \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
+        \PY{k}{def} \PY{n+nf}{matxRound}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{decPts}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n+nb}{round}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{,}\PY{n}{decPts}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 matxRound 函数}
+        \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}matxRound
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{1.4
+计算矩阵的转置}\label{ux8ba1ux7b97ux77e9ux9635ux7684ux8f6cux7f6e}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} TODO 计算矩阵的转置}
+        \PY{k}{def} \PY{n+nf}{transpose}\PY{p}{(}\PY{n}{M}\PY{p}{)}\PY{p}{:}
+            \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{M}\PY{p}{)}
+            \PY{n}{MT} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{row}\PY{p}{[}\PY{n}{col}\PY{p}{]} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{M}\PY{p}{]} \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{p}{)}\PY{p}{]}
+            \PY{k}{return} \PY{n}{MT}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 transpose 函数}
+        \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}transpose
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{1.5 计算矩阵乘法
+AB}\label{ux8ba1ux7b97ux77e9ux9635ux4e58ux6cd5-ab}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} TODO 计算矩阵乘法 AB，如果无法相乘则raise ValueError}
+        \PY{k}{def} \PY{n+nf}{matxMultiply}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{B}\PY{p}{)}\PY{p}{:}
+            \PY{n}{multiply} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)} \PY{o}{!=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{B}\PY{p}{)}\PY{p}{:}
+                \PY{k}{raise} \PY{n+ne}{ValueError}
+                 
+            \PY{n}{result} \PY{o}{=} \PY{p}{[}\PY{n+nb}{list}\PY{p}{(}\PY{n}{row}\PY{p}{)} \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{B}\PY{p}{)}\PY{p}{]} 
+          
+            \PY{k}{for} \PY{n}{Al} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{row} \PY{o}{=}\PY{p}{[}\PY{p}{]}
+                \PY{k}{for} \PY{n}{Bl} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                    \PY{n}{num} \PY{o}{=} \PY{l+m+mi}{0}
+                    \PY{k}{for} \PY{n}{Br} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                        \PY{n}{num} \PY{o}{+}\PY{o}{=}  \PY{n}{A}\PY{p}{[}\PY{n}{Al}\PY{p}{]}\PY{p}{[}\PY{n}{Br}\PY{p}{]} \PY{o}{*} \PY{n}{result}\PY{p}{[}\PY{n}{Bl}\PY{p}{]}\PY{p}{[}\PY{n}{Br}\PY{p}{]}
+                    \PY{n}{row}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{num}\PY{p}{)}
+                \PY{n}{multiply}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{row}\PY{p}{)}
+            \PY{k}{return} \PY{n}{multiply}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 matxMultiply 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}matxMultiply
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.122s
+
+OK
+
+    \end{Verbatim}
+
+    \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{2 Gaussian Jordan
+消元法}\label{gaussian-jordan-ux6d88ux5143ux6cd5}
+
+\subsection{2.1
+构造增广矩阵}\label{ux6784ux9020ux589eux5e7fux77e9ux9635}
+
+\$ A =
+
+\begin{bmatrix}
+    a_{11}    & a_{12} & ... & a_{1n}\\
+    a_{21}    & a_{22} & ... & a_{2n}\\
+    a_{31}    & a_{22} & ... & a_{3n}\\
+    ...    & ... & ... & ...\\
+    a_{n1}    & a_{n2} & ... & a_{nn}\\
+\end{bmatrix}
+
+, b =
+
+\begin{bmatrix}
+    b_{1}  \\
+    b_{2}  \\
+    b_{3}  \\
+    ...    \\
+    b_{n}  \\
+\end{bmatrix}
+
+\$
+
+返回 \$ Ab =
+
+\begin{bmatrix}
+    a_{11}    & a_{12} & ... & a_{1n} & b_{1}\\
+    a_{21}    & a_{22} & ... & a_{2n} & b_{2}\\
+    a_{31}    & a_{22} & ... & a_{3n} & b_{3}\\
+    ...    & ... & ... & ...& ...\\
+    a_{n1}    & a_{n2} & ... & a_{nn} & b_{n} \end{bmatrix}
+
+\$
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} TODO 构造增广矩阵，假设A，b行数相同}
+         \PY{k}{def} \PY{n+nf}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{p}{[}\PY{n}{row\PYZus{}a} \PY{o}{+} \PY{n}{row\PYZus{}b} \PY{k}{for} \PY{n}{row\PYZus{}a}\PY{p}{,} \PY{n}{row\PYZus{}b} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 augmentMatrix 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}augmentMatrix
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{2.2 初等行变换}\label{ux521dux7b49ux884cux53d8ux6362}
+
+\begin{itemize}
+\tightlist
+\item
+  交换两行
+\item
+  把某行乘以一个非零常数
+\item
+  把某行加上另一行的若干倍：
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} TODO r1 \PYZlt{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZgt{} r2}
+         \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
+         \PY{k}{def} \PY{n+nf}{swapRows}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r1}\PY{p}{,} \PY{n}{r2}\PY{p}{)}\PY{p}{:}
+             \PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]}\PY{p}{,}\PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]} \PY{o}{=} \PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]}\PY{p}{,}\PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 swapRows 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}swapRows
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} TODO r1 \PYZlt{}\PYZhy{}\PYZhy{}\PYZhy{} r1 * scale}
+         \PY{c+c1}{\PYZsh{} scale为0是非法输入，要求 raise ValueError}
+         \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
+         \PY{k}{def} \PY{n+nf}{scaleRow}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{scale}\PY{p}{)}\PY{p}{:}
+             \PY{k}{if} \PY{n}{scale} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                 \PY{k}{raise} \PY{n+ne}{ValueError}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{scale CANNOT be 0}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{e} \PY{o}{*} \PY{n}{scale} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{M}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 scaleRow 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}scaleRow
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} TODO r1 \PYZlt{}\PYZhy{}\PYZhy{}\PYZhy{} r1 + r2*scale}
+         \PY{c+c1}{\PYZsh{} 直接修改参数矩阵，无返回值}
+         \PY{k}{def} \PY{n+nf}{addScaledRow}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{r1}\PY{p}{,} \PY{n}{r2}\PY{p}{,} \PY{n}{scale}\PY{p}{)}\PY{p}{:} 
+             \PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{n}{e1} \PY{o}{+} \PY{n}{e2} \PY{o}{*} \PY{n}{scale} \PY{k}{for} \PY{n}{e1}\PY{p}{,} \PY{n}{e2} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{M}\PY{p}{[}\PY{n}{r1}\PY{p}{]}\PY{p}{,} \PY{n}{M}\PY{p}{[}\PY{n}{r2}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 addScaledRow 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}addScaledRow
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{2.3 Gaussian Jordan 消元法求解 Ax =
+b}\label{gaussian-jordan-ux6d88ux5143ux6cd5ux6c42ux89e3-ax-b}
+
+    \subsubsection{2.3.1 算法}\label{ux7b97ux6cd5}
+
+步骤1 检查A，b是否行数相同
+
+步骤2 构造增广矩阵Ab
+
+步骤3 逐列转换Ab为化简行阶梯形矩阵
+\href{https://zh.wikipedia.org/wiki/\%E9\%98\%B6\%E6\%A2\%AF\%E5\%BD\%A2\%E7\%9F\%A9\%E9\%98\%B5\#.E5.8C.96.E7.AE.80.E5.90.8E.E7.9A.84-.7Bzh-hans:.E8.A1.8C.3B_zh-hant:.E5.88.97.3B.7D-.E9.98.B6.E6.A2.AF.E5.BD.A2.E7.9F.A9.E9.98.B5}{中文维基链接}
+
+\begin{verbatim}
+对于Ab的每一列（最后一列除外）
+    当前列为列c
+    寻找列c中 对角线以及对角线以下所有元素（行 c~N）的绝对值的最大值
+    如果绝对值最大值为0
+        那么A为奇异矩阵，返回None (你可以在选做问题2.4中证明为什么这里A一定是奇异矩阵)
+    否则
+        使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c） 
+        使用第二个行变换，将列c的对角线元素缩放为1
+        多次使用第三个行变换，将列c的其他元素消为0
+        
+\end{verbatim}
+
+步骤4 返回Ab的最后一列
+
+\textbf{注：}
+我们并没有按照常规方法先把矩阵转化为行阶梯形矩阵，再转换为化简行阶梯形矩阵，而是一步到位。如果你熟悉常规方法的话，可以思考一下两者的等价性。
+
+    \subsubsection{2.3.2 算法推演}\label{ux7b97ux6cd5ux63a8ux6f14}
+
+为了充分了解Gaussian Jordan消元法的计算流程，请根据Gaussian
+Jordan消元法，分别手动推演矩阵A为\textbf{\emph{可逆矩阵}}，矩阵A为\textbf{\emph{奇异矩阵}}两种情况。
+
+    \paragraph{推演示例}\label{ux63a8ux6f14ux793aux4f8b}
+
+\(Ab = \begin{bmatrix}  -7 & 5 & -1 & 1\\  1 & -3 & -8 & 1\\  -10 & -2 & 9 & 1\end{bmatrix}\)
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & \frac{1}{5} & -\frac{9}{10} & -\frac{1}{10}\\  0 & -\frac{16}{5} & -\frac{71}{10} & \frac{11}{10}\\  0 & \frac{32}{5} & -\frac{73}{10} & \frac{3}{10}\end{bmatrix}\)
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & -\frac{43}{64} & -\frac{7}{64}\\  0 & 1 & -\frac{73}{64} & \frac{3}{64}\\  0 & 0 & -\frac{43}{4} & \frac{5}{4}\end{bmatrix}\)
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & 0 & -\frac{3}{16}\\  0 & 1 & 0 & -\frac{59}{688}\\  0 & 0 & 1 & -\frac{5}{43}\end{bmatrix}\)
+
+\paragraph{推演有以下要求:}\label{ux63a8ux6f14ux6709ux4ee5ux4e0bux8981ux6c42}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  展示每一列的消元结果, 比如3*3的矩阵, 需要写三步
+\item
+  用分数来表示
+\item
+  分数不能再约分
+\item
+  我们已经给出了latex的语法,你只要把零改成你要的数字(或分数)即可
+\item
+  可以用\href{http://www.math.odu.edu/~bogacki/cgi-bin/lat.cgi?c=sys}{这个页面}检查你的答案(注意只是答案,
+  推演步骤两者算法不一致)
+\end{enumerate}
+
+\emph{你可以用python的
+\href{https://docs.python.org/2/library/fractions.html}{fractions}
+模块辅助你的约分}
+
+    \paragraph{分数的输入方法}\label{ux5206ux6570ux7684ux8f93ux5165ux65b9ux6cd5}
+
+(双击这个区域就能看到语法啦)
+
+示例一: \(\frac{n}{m}\)
+
+示例二: \(-\frac{a}{b}\)
+
+    \paragraph{以下开始你的尝试吧!}\label{ux4ee5ux4e0bux5f00ux59cbux4f60ux7684ux5c1dux8bd5ux5427}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{} 不要修改这里！}
+         \PY{k+kn}{from} \PY{n+nn}{helper} \PY{k}{import} \PY{o}{*}
+         \PY{n}{A} \PY{o}{=} \PY{n}{generateMatrix}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{seed}\PY{p}{,}\PY{n}{singular}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+         \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{shape}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}\PY{n}{dtype}\PY{o}{=}\PY{n+nb}{int}\PY{p}{)} \PY{c+c1}{\PYZsh{} it doesn\PYZsq{}t matter}
+         \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{n}{b}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} 请确保你的增广矩阵已经写好了}
+         \PY{n}{printInMatrixFormat}\PY{p}{(}\PY{n}{Ab}\PY{p}{,}\PY{n}{padding}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{truncating}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+  7,  5,  3 ||  1 
+ -5, -4,  6 ||  1 
+  2, -2, -9 ||  1 
+
+    \end{Verbatim}
+
+    请按照算法的步骤3，逐步推演\textbf{\emph{可逆矩阵}}的变换。
+
+在下面列出每一次循环体执行之后的增广矩阵(注意使用Section \ref{分数的输入方法})
+
+\$ Ab =
+
+\begin{bmatrix}
+    7 & 5 & 3 & 1 \\
+    -5 & -4 & 6 & 1 \\
+    2 & -2 & -9 & 1 \end{bmatrix}
+
+\$
+
+\$ -\/-\textgreater{}
+
+\begin{bmatrix}
+    1 & \frac{5}{7} & \frac{3}{7} & \frac{1}{7} \\
+    0 & -\frac{3}{35} & \frac{57}{35} & \frac{12}{35} \\
+    0 & \frac{12}{7} & \frac{69}{14} & \frac{5}{14}\end{bmatrix}
+
+\$
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & \frac{3}{7} & \frac{43}{75}\\  0 & 1 & \frac{57}{35} & -\frac{53}{75}\\  0 & 0 & \frac{69}{14} & \frac{13}{75}\end{bmatrix}\)
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & 0 & \frac{43}{75}\\  0 & 1 & 0 & -\frac{53}{75}\\  0 & 0 & 1 & \frac{13}{75}\end{bmatrix}\)
+
+\(...\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} 不要修改这里！}
+         \PY{n}{A} \PY{o}{=} \PY{n}{generateMatrix}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{seed}\PY{p}{,}\PY{n}{singular}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{n}{b} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{shape}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}\PY{n}{dtype}\PY{o}{=}\PY{n+nb}{int}\PY{p}{)}
+         \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}\PY{p}{,}\PY{n}{b}\PY{o}{.}\PY{n}{tolist}\PY{p}{(}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} 请确保你的增广矩阵已经写好了}
+         \PY{n}{printInMatrixFormat}\PY{p}{(}\PY{n}{Ab}\PY{p}{,}\PY{n}{padding}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{truncating}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ -1,  6, -8 ||  1 
+-10, -5,  5 ||  1 
+ -9,  2, -4 ||  1 
+
+    \end{Verbatim}
+
+    请按照算法的步骤3，逐步推演\textbf{\emph{奇异矩阵}}的变换。
+
+在下面列出每一次循环体执行之后的增广矩阵(注意使用Section \ref{分数的输入方法})
+
+\$ Ab =
+
+\begin{bmatrix}
+    -1 & 6 & -8 & 1 \\
+    -10 & -5 & 5 & 1 \\
+    -9 & 2 & -4 & 1 \end{bmatrix}
+
+\$
+
+\$ -\/-\textgreater{}
+
+\begin{bmatrix}
+    1 & -6 & 8 & 0 \\
+    0 & \frac{1}{2} & -\frac{1}{2} & 0 \\
+    0 & \frac{2}{9} & -\frac{4}{9} & 0 \end{bmatrix}
+
+\$
+
+\$ -\/-\textgreater{} \$
+\(\begin{bmatrix}  1 & 0 & \frac{8}{13} & 0 \\  0 & 1 & -\frac{17}{13} & 0 \\  0 & 0 & 0 & 1 \end{bmatrix}\)
+
+\(...\)
+
+    \subsubsection{2.3.3 实现 Gaussian Jordan
+消元法}\label{ux5b9eux73b0-gaussian-jordan-ux6d88ux5143ux6cd5}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c+c1}{\PYZsh{} TODO 实现 Gaussain Jordan 方法求解 Ax = b}
+         
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Gaussian Jordan 方法求解 Ax = b.}
+         \PY{l+s+sd}{    参数}
+         \PY{l+s+sd}{        A: 方阵 }
+         \PY{l+s+sd}{        b: 列向量}
+         \PY{l+s+sd}{        decPts: 四舍五入位数，默认为4}
+         \PY{l+s+sd}{        epsilon: 判读是否为0的阈值，默认 1.0e\PYZhy{}16}
+         \PY{l+s+sd}{        }
+         \PY{l+s+sd}{    返回列向量 x 使得 Ax = b }
+         \PY{l+s+sd}{    返回None，如果 A，b 高度不同}
+         \PY{l+s+sd}{    返回None，如果 A 为奇异矩阵}
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{k+kn}{from} \PY{n+nn}{decimal} \PY{k}{import} \PY{n}{Decimal}
+         \PY{k+kn}{from} \PY{n+nn}{fractions} \PY{k}{import} \PY{n}{Fraction}
+         
+         \PY{k}{def} \PY{n+nf}{gj\PYZus{}Solve}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{decPts}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{epsilon}\PY{o}{=}\PY{l+m+mf}{1.0e\PYZhy{}16}\PY{p}{)}\PY{p}{:}
+         \PY{c+c1}{\PYZsh{} 检查A,b是否行数相同}
+             \PY{k}{if} \PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)} \PY{o}{!=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{b}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{return} \PY{k+kc}{None}
+         
+         \PY{c+c1}{\PYZsh{} 构造增广矩阵Ab}
+             \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} 逐列转换Ab为简化行阶梯形矩阵}
+             \PY{n}{rows}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} TODO}
+             \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                 
+                 \PY{c+c1}{\PYZsh{}转置后迭代更加方便}
+                 \PY{n}{AbT} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+                 \PY{n}{col} \PY{o}{=} \PY{n}{AbT}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}列c(转置后的行c)中，c\PYZti{}N行（转置后的c\PYZti{}N列），每一个元素的绝对值列表}
+                 \PY{n}{abs\PYZus{}cn} \PY{o}{=} \PY{p}{[}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{e}\PY{p}{)} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{col}\PY{p}{[}\PY{n}{c}\PY{p}{:}\PY{p}{]}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}绝对值列表的最大值}
+                 \PY{n}{max\PYZus{}abs} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{abs\PYZus{}cn}\PY{p}{)}
+                 \PY{n}{max\PYZus{}index} \PY{o}{=} \PY{n}{abs\PYZus{}cn}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{max\PYZus{}abs}\PY{p}{)} \PY{o}{+} \PY{n}{c}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}value = col[max\PYZus{}index]}
+                 \PY{c+c1}{\PYZsh{}因为精度的问题，所以绝对值最大值小于 epsilon 就看作是等于 0}
+                 \PY{k}{if} \PY{n}{max\PYZus{}abs} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{epsilon}\PY{p}{:}
+                     \PY{k}{return} \PY{k+kc}{None}
+         
+                 \PY{c+c1}{\PYZsh{}最大值所在行（转置后的列）}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}index = abs\PYZus{}cn.index(max\PYZus{}value) + c}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c）}
+                 \PY{n}{swapRows}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{max\PYZus{}index}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第二个行变换，将列c的对角线元素缩放为1}
+                 \PY{n}{scale\PYZus{}c} \PY{o}{=} \PY{l+m+mf}{1.0} \PY{o}{/} \PY{n}{Ab}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 \PY{n}{scaleRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{scale\PYZus{}c}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}多次使用第三个行变换，将列c的其他元素消为0}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{if} \PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]} \PY{o}{!=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{i} \PY{o}{!=} \PY{n}{c}\PY{p}{:}
+                         \PY{n}{addScaledRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{i}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{)}
+             
+             \PY{n}{matxRound}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}            
+                     
+         \PY{c+c1}{\PYZsh{} 返回Ab的最后一列}
+             \PY{k}{return} \PY{p}{[}\PY{p}{[}\PY{n}{e\PYZus{}last}\PY{p}{]} \PY{k}{for} \PY{n}{e\PYZus{}last} \PY{o+ow}{in} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c+c1}{\PYZsh{} TODO 实现 Gaussain Jordan 方法求解 Ax = b}
+         
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Gaussian Jordan 方法求解 Ax = b.}
+         \PY{l+s+sd}{    参数}
+         \PY{l+s+sd}{        A: 方阵 }
+         \PY{l+s+sd}{        b: 列向量}
+         \PY{l+s+sd}{        decPts: 四舍五入位数，默认为4}
+         \PY{l+s+sd}{        epsilon: 判读是否为0的阈值，默认 1.0e\PYZhy{}16}
+         \PY{l+s+sd}{        }
+         \PY{l+s+sd}{    返回列向量 x 使得 Ax = b }
+         \PY{l+s+sd}{    返回None，如果 A，b 高度不同}
+         \PY{l+s+sd}{    返回None，如果 A 为奇异矩阵}
+         \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+         \PY{k+kn}{from} \PY{n+nn}{decimal} \PY{k}{import} \PY{n}{Decimal}
+         \PY{k+kn}{from} \PY{n+nn}{fractions} \PY{k}{import} \PY{n}{Fraction}
+         
+         \PY{k}{def} \PY{n+nf}{gj\PYZus{}Solve}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{decPts}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{epsilon}\PY{o}{=}\PY{l+m+mf}{1.0e\PYZhy{}16}\PY{p}{)}\PY{p}{:}
+         \PY{c+c1}{\PYZsh{} 检查A,b是否行数相同}
+             
+         
+         \PY{c+c1}{\PYZsh{} 构造增广矩阵Ab}
+             \PY{n}{Ab} \PY{o}{=} \PY{n}{augmentMatrix}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} 逐列转换Ab为简化行阶梯形矩阵}
+             \PY{n}{rows}\PY{p}{,} \PY{n}{cols} \PY{o}{=} \PY{n}{shape}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} TODO}
+             \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{cols}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                 
+                 \PY{c+c1}{\PYZsh{}转置后迭代更加方便}
+                 \PY{n}{AbT} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}
+                 \PY{n}{col} \PY{o}{=} \PY{n}{AbT}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}列c(转置后的行c)中，c\PYZti{}N行（转置后的c\PYZti{}N列），每一个元素的绝对值列表}
+                 \PY{n}{abs\PYZus{}cn} \PY{o}{=} \PY{p}{[}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{e}\PY{p}{)} \PY{k}{for} \PY{n}{e} \PY{o+ow}{in} \PY{n}{col}\PY{p}{[}\PY{n}{c}\PY{p}{:}\PY{p}{]}\PY{p}{]}
+                 
+                 \PY{c+c1}{\PYZsh{}绝对值列表的最大值}
+                 \PY{n}{max\PYZus{}abs} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{abs\PYZus{}cn}\PY{p}{)}
+                 \PY{n}{max\PYZus{}index} \PY{o}{=} \PY{n}{abs\PYZus{}cn}\PY{o}{.}\PY{n}{index}\PY{p}{(}\PY{n}{max\PYZus{}abs}\PY{p}{)} \PY{o}{+} \PY{n}{c}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}value = col[max\PYZus{}index]}
+                 \PY{c+c1}{\PYZsh{}因为精度的问题，所以绝对值最大值小于 epsilon 就看作是等于 0}
+                 \PY{k}{if} \PY{n}{max\PYZus{}abs} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{epsilon}\PY{p}{:}
+                     \PY{k}{return} \PY{k+kc}{None}
+         
+                 \PY{c+c1}{\PYZsh{}最大值所在行（转置后的列）}
+                 \PY{c+c1}{\PYZsh{}max\PYZus{}index = abs\PYZus{}cn.index(max\PYZus{}value) + c}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第一个行变换，将绝对值最大值所在行交换到对角线元素所在行（行c）}
+                 \PY{n}{swapRows}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{max\PYZus{}index}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}使用第二个行变换，将列c的对角线元素缩放为1}
+                 \PY{n}{scale\PYZus{}c} \PY{o}{=} \PY{l+m+mf}{1.0} \PY{o}{/} \PY{n}{Ab}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}
+                 \PY{n}{scaleRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{scale\PYZus{}c}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}多次使用第三个行变换，将列c的其他元素消为0}
+                 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{if} \PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]} \PY{o}{!=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{i} \PY{o}{!=} \PY{n}{c}\PY{p}{:}
+                         \PY{n}{addScaledRow}\PY{p}{(}\PY{n}{Ab}\PY{p}{,} \PY{n}{i}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{Ab}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{c}\PY{p}{]}\PY{p}{)}
+             
+             \PY{n}{matxRound}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}            
+                     
+         \PY{c+c1}{\PYZsh{} 返回Ab的最后一列}
+             \PY{k}{return} \PY{p}{[}\PY{p}{[}\PY{n}{e\PYZus{}last}\PY{p}{]} \PY{k}{for} \PY{n}{e\PYZus{}last} \PY{o+ow}{in} \PY{n}{transpose}\PY{p}{(}\PY{n}{Ab}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c+c1}{\PYZsh{} 运行以下代码测试你的 gj\PYZus{}Solve 函数}
+         \PY{o}{\PYZpc{}}\PY{k}{run} \PYZhy{}i \PYZhy{}e test.py LinearRegressionTestCase.test\PYZus{}gj\PYZus{}Solve
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+.
+----------------------------------------------------------------------
+Ran 1 test in 4.030s
+
+OK
+
+    \end{Verbatim}
+
+    \subsection{(选做) 2.4
+算法正确判断了奇异矩阵：}\label{ux9009ux505a-2.4-ux7b97ux6cd5ux6b63ux786eux5224ux65adux4e86ux5947ux5f02ux77e9ux9635}
+
+在算法的步骤3
+中，如果发现某一列对角线和对角线以下所有元素都为0，那么则断定这个矩阵为奇异矩阵。
+
+我们用正式的语言描述这个命题，并证明为真。
+
+证明下面的命题：
+
+\textbf{如果方阵 A 可以被分为4个部分: }
+
+\$ A =
+
+\begin{bmatrix}
+    I    & X \\
+    Z    & Y \\
+\end{bmatrix}
+
+, \text{其中 I 为单位矩阵，Z 为全0矩阵，Y 的第一列全0}\$，
+
+\textbf{那么A为奇异矩阵。}
+
+提示：从多种角度都可以完成证明 - 考虑矩阵 Y 和 矩阵 A 的秩 - 考虑矩阵 Y
+和 矩阵 A 的行列式 - 考虑矩阵 A 的某一列是其他列的线性组合
+
+    TODO 证明：
+
+    \section{3 线性回归}\label{ux7ebfux6027ux56deux5f52}
+
+    \subsection{3.1
+随机生成样本点}\label{ux968fux673aux751fux6210ux6837ux672cux70b9}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} 不要修改这里！}
+         \PY{o}{\PYZpc{}}\PY{k}{matplotlib} notebook
+         \PY{k+kn}{from} \PY{n+nn}{helper} \PY{k}{import} \PY{o}{*}
+         
+         \PY{n}{X}\PY{p}{,}\PY{n}{Y} \PY{o}{=} \PY{n}{generatePoints2D}\PY{p}{(}\PY{n}{seed}\PY{p}{)}
+         \PY{n}{vs\PYZus{}scatter\PYZus{}2d}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \subsection{3.2
+拟合一条直线}\label{ux62dfux5408ux4e00ux6761ux76f4ux7ebf}
+
+\subsubsection{3.2.1
+猜测一条直线}\label{ux731cux6d4bux4e00ux6761ux76f4ux7ebf}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{c+c1}{\PYZsh{}TODO 请选择最适合的直线 y = mx + b}
+         \PY{n}{m1} \PY{o}{=} \PY{l+m+mi}{3}
+         \PY{n}{b1} \PY{o}{=} \PY{l+m+mi}{13}
+         
+         \PY{c+c1}{\PYZsh{} 不要修改这里！}
+         \PY{n}{vs\PYZus{}scatter\PYZus{}2d}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{m1}\PY{p}{,} \PY{n}{b1}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \subsubsection{3.2.2 计算平均平方误差
+(MSE)}\label{ux8ba1ux7b97ux5e73ux5747ux5e73ux65b9ux8befux5dee-mse}
+
+    我们要编程计算所选直线的平均平方误差(MSE),
+即数据集中每个点到直线的Y方向距离的平方的平均数，表达式如下： \[
+MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{c+c1}{\PYZsh{} TODO 实现以下函数并输出所选直线的MSE}
+         \PY{k}{def} \PY{n+nf}{calculateMSE2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{m}\PY{p}{,}\PY{n}{b}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return}  \PY{n+nb}{sum}\PY{p}{(}\PY{p}{[}\PY{p}{(}\PY{n}{y}\PY{o}{\PYZhy{}}\PY{n}{m}\PY{o}{*}\PY{n}{x} \PY{o}{\PYZhy{}}\PY{n}{b}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{x}\PY{p}{,}\PY{n}{y} \PY{o+ow}{in} \PY{n+nb}{zip}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{X}\PY{p}{)} 
+         
+         \PY{c+c1}{\PYZsh{} TODO 检查这里的结果, 如果你上面猜测的直线准确, 这里的输出会在1.5以内}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{calculateMSE2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{m1}\PY{p}{,}\PY{n}{b1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.2004601832217412
+
+    \end{Verbatim}
+
+    \subsubsection{\texorpdfstring{3.2.3 调整参数 \(m, b\)
+来获得最小的平方平均误差}{3.2.3 调整参数 m, b 来获得最小的平方平均误差}}\label{ux8c03ux6574ux53c2ux6570-m-b-ux6765ux83b7ux5f97ux6700ux5c0fux7684ux5e73ux65b9ux5e73ux5747ux8befux5dee}
+
+你可以调整3.2.1中的参数 \(m1,b1\) 让蓝点均匀覆盖在红线周围，然后微调
+\(m1, b1\) 让MSE最小。
+
+    \subsection{\texorpdfstring{3.3 (选做) 找到参数 \(m, b\)
+使得平方平均误差最小}{3.3 (选做) 找到参数 m, b 使得平方平均误差最小}}\label{ux9009ux505a-ux627eux5230ux53c2ux6570-m-b-ux4f7fux5f97ux5e73ux65b9ux5e73ux5747ux8befux5deeux6700ux5c0f}
+
+\textbf{这一部分需要简单的微积分知识( \$ (x\^{}2)' = 2x \$
+)。因为这是一个线性代数项目，所以设为选做。}
+
+刚刚我们手动调节参数，尝试找到最小的平方平均误差。下面我们要精确得求解
+\(m, b\) 使得平方平均误差最小。
+
+定义目标函数 \(E\) 为 \[
+E = \frac{1}{2}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
+\]
+
+因为 \(E = \frac{n}{2}MSE\), 所以 \(E\) 取到最小值时，\(MSE\)
+也取到最小值。要找到 \(E\) 的最小值，即要找到 \(m, b\) 使得 \(E\) 相对于
+\(m\), \(E\) 相对于 \(b\) 的偏导数等于0.
+
+因此我们要解下面的方程组。
+
+\[
+\begin{cases}
+\displaystyle
+\frac{\partial E}{\partial m} =0 \\
+\\
+\displaystyle
+\frac{\partial E}{\partial b} =0 \\
+\end{cases}
+\]
+
+\subsubsection{3.3.1
+计算目标函数相对于参数的导数}\label{ux8ba1ux7b97ux76eeux6807ux51fdux6570ux76f8ux5bf9ux4e8eux53c2ux6570ux7684ux5bfcux6570}
+
+首先我们计算两个式子左边的值
+
+证明/计算： \[
+\frac{\partial E}{\partial m} = \sum_{i=1}^{n}{-x_i(y_i - mx_i - b)}
+\]
+
+\[
+\frac{\partial E}{\partial b} = \sum_{i=1}^{n}{-(y_i - mx_i - b)}
+\]
+
+    TODO 证明:
+
+    \subsubsection{3.3.2 实例推演}\label{ux5b9eux4f8bux63a8ux6f14}
+
+现在我们有了一个二元二次方程组
+
+\[
+\begin{cases}
+\displaystyle
+\sum_{i=1}^{n}{-x_i(y_i - mx_i - b)} =0 \\
+\\
+\displaystyle
+\sum_{i=1}^{n}{-(y_i - mx_i - b)} =0 \\
+\end{cases}
+\]
+
+为了加强理解，我们用一个实际例子演练。
+
+我们要用三个点 \((1,1), (2,2), (3,2)\) 来拟合一条直线 y = m*x + b,
+请写出
+
+\begin{itemize}
+\tightlist
+\item
+  目标函数 \(E\),
+\item
+  二元二次方程组，
+\item
+  并求解最优参数 \(m, b\)
+\end{itemize}
+
+    TODO 写出目标函数，方程组和最优参数
+
+    \subsubsection{3.3.3
+将方程组写成矩阵形式}\label{ux5c06ux65b9ux7a0bux7ec4ux5199ux6210ux77e9ux9635ux5f62ux5f0f}
+
+我们的二元二次方程组可以用更简洁的矩阵形式表达，将方程组写成矩阵形式更有利于我们使用
+Gaussian Jordan 消元法求解。
+
+请证明 \[
+\begin{bmatrix}
+    \frac{\partial E}{\partial m} \\
+    \frac{\partial E}{\partial b} 
+\end{bmatrix} = X^TXh - X^TY
+\]
+
+其中向量 \(Y\), 矩阵 \(X\) 和 向量 \(h\) 分别为 : \[
+Y =  \begin{bmatrix}
+    y_1 \\
+    y_2 \\
+    ... \\
+    y_n
+\end{bmatrix}
+,
+X =  \begin{bmatrix}
+    x_1 & 1 \\
+    x_2 & 1\\
+    ... & ...\\
+    x_n & 1 \\
+\end{bmatrix},
+h =  \begin{bmatrix}
+    m \\
+    b \\
+\end{bmatrix}
+\]
+
+    TODO 证明:
+
+    至此我们知道，通过求解方程 \(X^TXh = X^TY\)
+来找到最优参数。这个方程十分重要，他有一个名字叫做 \textbf{Normal
+Equation}，也有直观的几何意义。你可以在
+\href{http://open.163.com/movie/2010/11/J/U/M6V0BQC4M_M6V2AJLJU.html}{子空间投影}
+和
+\href{http://open.163.com/movie/2010/11/P/U/M6V0BQC4M_M6V2AOJPU.html}{投影矩阵与最小二乘}
+看到更多关于这个方程的内容。
+
+    \subsubsection{\texorpdfstring{3.4 求解
+\(X^TXh = X^TY\)}{3.4 求解 X\^{}TXh = X\^{}TY}}\label{ux6c42ux89e3-xtxh-xty}
+
+在3.3 中，我们知道线性回归问题等价于求解 \(X^TXh = X^TY\)
+(如果你选择不做3.3，就勇敢的相信吧，哈哈)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{} TODO 实现线性回归}
+         \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+         \PY{l+s+sd}{参数：X, Y 存储着一一对应的横坐标与纵坐标的两个一维数组}
+         \PY{l+s+sd}{返回：线性回归的系数(如上面所说的 m, b)}
+         \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+         \PY{k}{def} \PY{n+nf}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:} 
+             \PY{c+c1}{\PYZsh{} 一维数组X转矩阵}
+             \PY{n}{matxX} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{]} \PY{k}{for} \PY{n}{x} \PY{o+ow}{in} \PY{n}{X}\PY{p}{]}
+             \PY{c+c1}{\PYZsh{} 矩阵转置}
+             \PY{n}{transX} \PY{o}{=} \PY{n}{transpose}\PY{p}{(}\PY{n}{matxX}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} 矩阵相乘}
+             \PY{n}{matxA} \PY{o}{=} \PY{n}{matxMultiply}\PY{p}{(}\PY{n}{transX}\PY{p}{,} \PY{n}{matxX}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 一维数组Y转矩阵}
+             \PY{n}{matxY} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{y}\PY{p}{]} \PY{k}{for} \PY{n}{y} \PY{o+ow}{in} \PY{n}{Y}\PY{p}{]}
+             \PY{c+c1}{\PYZsh{} 矩阵相乘}
+             \PY{n}{matxb} \PY{o}{=} \PY{n}{matxMultiply}\PY{p}{(}\PY{n}{transX}\PY{p}{,} \PY{n}{matxY}\PY{p}{)}
+         
+             \PY{c+c1}{\PYZsh{} 高斯消元求解}
+             \PY{n}{gj\PYZus{}result} \PY{o}{=} \PY{n}{gj\PYZus{}Solve}\PY{p}{(}\PY{n}{matxA}\PY{p}{,} \PY{n}{matxb}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}     print(gj\PYZus{}result)}
+         
+             \PY{n}{m}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+m+mf}{0.0}
+         
+             \PY{k}{if} \PY{o+ow}{not} \PY{n}{gj\PYZus{}result}\PY{p}{:}
+                 \PY{k}{return} \PY{n}{m}\PY{p}{,} \PY{n}{b}
+         
+             \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{gj\PYZus{}result}\PY{p}{)}
+             \PY{k}{if} \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                 \PY{n}{m} \PY{o}{=} \PY{n}{gj\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{if} \PY{n}{gj\PYZus{}res\PYZus{}len} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{:}
+                 \PY{n}{b} \PY{o}{=} \PY{n}{gj\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{return} \PY{n}{m}\PY{p}{,} \PY{n}{b}
+         
+         \PY{n}{m2}\PY{p}{,}\PY{n}{b2} \PY{o}{=} \PY{n}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{b2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n}{b2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3.084 12.6578
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{c+c1}{\PYZsh{} 请不要修改下面的代码}
+         \PY{n}{m2}\PY{p}{,}\PY{n}{b2} \PY{o}{=} \PY{n}{linearRegression2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{k}{assert} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{b2}\PY{p}{,}\PY{n+nb}{float}\PY{p}{)}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{b is not a float}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{m2}\PY{p}{,}\PY{n}{b2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+3.084 12.6578
+
+    \end{Verbatim}
+
+    你求得的回归结果是什么？ 请使用运行以下代码将它画出来。
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{}\PYZsh{} 请不要修改下面的代码}
+         \PY{n}{vs\PYZus{}scatter\PYZus{}2d}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{Y}\PY{p}{,} \PY{n}{m2}\PY{p}{,} \PY{n}{b2}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{calculateMSE2D}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{,}\PY{n}{m2}\PY{p}{,}\PY{n}{b2}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+1.0209278908110677
+
+    \end{Verbatim}
+
+    \subsection{Bonus !!!}\label{bonus}
+
+如果你的高斯约当消元法通过了单元测试, 那么它将能够解决多维的回归问题\\
+你将会在更高维度考验你的线性回归实现
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{c+c1}{\PYZsh{} 生成三维的数据点}
+         \PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d} \PY{o}{=} \PY{n}{generatePoints3D}\PY{p}{(}\PY{n}{seed}\PY{p}{)}
+         \PY{n}{vs\PYZus{}scatter\PYZus{}3d}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+    你的线性回归是否能够对付三维的情况?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{k}{def} \PY{n+nf}{linearRegression}\PY{p}{(}\PY{n}{X}\PY{p}{,}\PY{n}{Y}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{k+kc}{None}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{coeff} \PY{o}{=} \PY{n}{linearRegression}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{)}
+         \PY{n}{vs\PYZus{}scatter\PYZus{}3d}\PY{p}{(}\PY{n}{X\PYZus{}3d}\PY{p}{,} \PY{n}{Y\PYZus{}3d}\PY{p}{,} \PY{n}{coeff}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+<IPython.core.display.Javascript object>
+    \end{verbatim}
+
+    
+    
+    \begin{verbatim}
+<IPython.core.display.HTML object>
+    \end{verbatim}
+
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
