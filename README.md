@@ -11,3 +11,8 @@ Machine Learning Engineer Basic
 3. Linear Regression 
 4. Investigate a Dataset
 5. Predicting Boston Housing Prices
+
+
+WeChat Mini Program
+1. News Demo
+2. Movie Demo
