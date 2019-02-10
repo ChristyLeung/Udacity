@@ -1,0 +1,35 @@
+/* pages/detail/detail.wxss */
+.header-divider {
+  height: 1rpx;
+  width: 750rpx;
+  background-color: #A020F0;
+  position: fixed;
+  margin-bottom: 20rpx;
+}
+.detail-wrapper {
+  padding: 30rpx;
+}
+.detail-header {
+  font-size: 40rpx;
+  line-height: 64rpx;
+  margin-bottom: 20rpx;
+}
+.detail-meta {
+  font-size: 27rpx;
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+.detail-content-image {
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.detail-content-p {
+  font-size: 28rpx;
+  line-height: 55rpx;
+  color: #000000;
+  margin-bottom: 28rpx;
+  text-align: justify;
+  letter-spacing: 4rpx;
+}

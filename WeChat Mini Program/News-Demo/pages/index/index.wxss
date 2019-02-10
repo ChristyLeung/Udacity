@@ -1,0 +1,70 @@
+/* pages/index.js/index.wxss */
+.list-item {
+  border-bottom: 1px solid #eee;
+  padding: 30rpx 0;
+  margin: 0 25rpx;
+}
+.list-item {
+  display: flex;
+  justify-content: space-between;
+}
+.list-item-source {
+  font-size: 24rpx;
+  color: #aaa;
+}
+.list-item-feature-source {
+  font-size: 24rpx;
+  color: #ddd;
+}
+.list-nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #A020F0;
+  color: #E6E6FA;
+  padding: 10rpx 10rpx 20rpx 10rpx;
+}
+.list-item-title {
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+}
+.list-nav-item {
+  font-size: 32rpx;
+  padding-bottom: 8rpx;
+}
+.list-item-image {
+  flex: 0 0 220rpx;
+  height: 150rpx;
+  background-size: cover;
+  margin-left: 20rpx;
+}
+.list-item-feature {
+  height: 350rpx;
+  padding: 30rpx;
+  background-color: #eee;
+  display: flex;
+}
+.list-item-feature-wrapper {
+  flex: 1;
+  background-size: cover;
+  padding: 10rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+.list-item-feature-title {
+  color: white;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.feature-tag {
+  position: absolute;
+  right: 30rpx;
+  top: 115rpx;
+  padding: 5rpx 14rpx;
+  font-size: 26rpx;
+  color: #ffffff;
+  background-color: rgba(244, 67, 54, 0.7);
+  border-bottom-left-radius: 20rpx;
+}

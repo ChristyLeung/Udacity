@@ -1,0 +1,20 @@
+<!--pages/detail/detail.wxml-->
+<view class="header-divider"></view>
+<view class="detail-wrapper">
+  <view class="detail-header">{{ title }}</view>
+  <view class="detail-meta">
+    <view>{{ source || (date && '腾讯新闻') }} {{ date }}</view>
+    <view>{{ readCount && '阅读' }} {{ readCount }}</view>
+  </view>
+  <view class="detail-content" wx:for="{{content}}" wx:key="{{item.id}}">
+    <view class="detail-content-p" wx:if="{{item.type=='p'}}">
+      <view>{{ item.text }}</view>
+    </view>
+    <image
+      class="detail-content-image"
+      wx:elif="{{item.type=='image'}}"
+      mode="widthFix"
+      src="{{item.src}}"
+    />
+  </view>
+</view>
